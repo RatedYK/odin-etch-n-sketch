@@ -1,5 +1,8 @@
 const container = document.querySelector("#container");
 const color = document.querySelector('#colorPicker');
+const prevColor = document.querySelector('#prevColor');
+let colorNow = "#000000";
+let oldColor = null;
 
 container.addEventListener('load',makeGrid(50));
 
@@ -31,20 +34,20 @@ function makeCell(num) {
 
 //select all squares in the grid and add an event
 function allowDraw() {
-    const cells = document.querySelectorAll(".cell");
     let canDraw = false;
+    const cells = document.querySelectorAll(".cell");
     cells.forEach( (cell) => {
         //checks to see if mouse is clicked
         cell.addEventListener('mousedown', () => {
-            if (!canDraw) canDraw = true;
+            canDraw = true;
+            cell.style.cssText = `background-color: ${colorNow};`;  
         })
-        //adds the color to the squares
         cell.addEventListener('mousemove', () => {
-            if (canDraw) cell.style.cssText = `background-color: ${color.value};`; 
-        });
+            if (canDraw) cell.style.cssText = `background-color: ${colorNow};`;
+        }) 
         //stops coloring when mouse is not longer clicked
         cell.addEventListener('mouseup', () => {
-            if (canDraw) canDraw = false;
+            canDraw = false;
         })
     })
 }
@@ -62,13 +65,38 @@ function makeNewGrid() {
     })
 
     //set new grid
-    let size = +prompt("Enter size of grid, 10 - 50")
-    
-    makeGrid(size);
+    let size = +prompt("Enter size of grid (10 - 100)")
+    size >= 10 && size <= 100 ? makeGrid(size): makeGrid(50);
 }
 
+//clears all squares, sets to default white color
 const clear = document.querySelector('.clear');
 clear.addEventListener('click', () => {
     const cells = document.querySelectorAll('.cell')
     cells.forEach((cell) => {cell.style.cssText = 'background-color: white;'})
+})
+
+//chooses the current drawing color.
+color.addEventListener('input', () => {
+    oldColor = colorNow; //updates prev color
+    prevColor.style.cssText = `background-color: ${colorNow};`; //updates prev color button
+    colorNow = color.value; //change current drawing color
+    console.log(`Old Color is ${oldColor}`)
+    console.log(`Color now is ${colorNow}`)
+    
+})
+prevColor.addEventListener('click', () => {
+    colorNow = oldColor; //update current drawing color to prev color
+    console.log(`Old Color is ${oldColor}`)
+    console.log(`Color now is ${colorNow}`)
+})
+
+//grid size toggler
+
+const gridLines = document.querySelector('.gridLines');
+gridLines.addEventListener('click', () => {
+    const cellLines = document.querySelectorAll('.cell')
+    cellLines.forEach((cell) => {
+        cell.classList.toggle('noBorder')
+    })
 })

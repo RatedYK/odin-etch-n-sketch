@@ -12,10 +12,17 @@
 
     <div id="container"></div>
     <div id="menu">
-        <label for="colorPicker">Color:</label>
-        <input type="color" id="colorPicker" value="#000000">
-        <button class="resize">Resize</button>
-        <button class="clear">Clear</button>
+        <div id="colorSet">
+            <label for="colorPicker" class="text">Color</label>
+            <input type="color" id="colorPicker" value="#000000">
+            <label for="prevColor" class="text">Prev Color</label>
+            <input type="button" id="prevColor">
+        </div>
+        <div class="button set">
+            <button class="gridLines">Toggle Grid</button>
+            <button class="resize">Resize</button>
+            <button class="clear">Clear</button>
+        </div>
     </div>
     
 </body>
