@@ -1,0 +1,11 @@
+
+.cell {
+    display: inline-block;
+    border: solid 1px black;
+    padding: 5px;
+}
+
+.gridRow {
+    margin-bottom: -8px;
+}
+
