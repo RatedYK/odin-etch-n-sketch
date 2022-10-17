@@ -5,25 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
+    <!--import a font from google to the website | the & adds an holographic effect-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=VT323&effect=anaglyph">
     <script src="./scripts.js" defer></script>
     <title>Etch 'n Sketch</title>
 </head>
 <body>
 
-    <div id="container"></div>
+    <div id="container">
+        <h1 class="	font-effect-anaglyph">Etch a Sketch</h1>
+    </div>
     <div id="menu">
-        <div id="colorSet">
+        <div id="colorSet" class="font-effect-anaglyph">
             <label for="colorPicker" class="text">Color</label>
             <input type="color" id="colorPicker" value="#000000">
             <label for="prevColor" class="text">Prev Color</label>
             <input type="button" id="prevColor">
         </div>
         <div class="button set">
-            <button class="gridLines">Toggle Grid</button>
+            <button class="gridLines">Grid: ON</button>
             <button class="resize">Resize</button>
             <button class="clear">Clear</button>
         </div>
     </div>
+    <footer id="footer" class="font-effect-anaglyph">
+        Made by:<a href="https://github.com/RatedYK"><img src="./GitHub-Mark-64px.png" id="github" alt="github logo"/>RatedYK</a>
+    </footer>
     
 </body>
 </html>

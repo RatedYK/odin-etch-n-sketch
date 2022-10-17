@@ -99,4 +99,6 @@ gridLines.addEventListener('click', () => {
     cellLines.forEach((cell) => {
         cell.classList.toggle('noBorder')
     })
+
+    gridLines.textContent === "Grid: ON" ? gridLines.textContent = "Grid: OFF" : gridLines.textContent = "Grid: ON"
 })
